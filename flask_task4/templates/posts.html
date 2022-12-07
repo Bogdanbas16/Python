@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+All Posts
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Всі пости</h1>
+
+    {% if articles|length > 0 %}
+
+    {% for el in articles %}
+    <div class="alert alert-info">
+            <h2>{{ el.title }}</h2>
+            <p>{{ el.intro }}</p>
+            <p><b>Дата публікації: {{ el.date.date() }}</b></p>
+            <a href="/posts/{{ el.id }}" class="btn btn-warning">Переглянути пост</a>
+        </div>
+        {% endfor %}
+        
+    {% else %}
+    <p>На даний момент немає постів на сайті!</p>
+    {% endif %}
+
+</div>
+{% endblock %}
